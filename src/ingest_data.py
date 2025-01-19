@@ -38,4 +38,23 @@ class ZipFileDataIngestion(DataIngestion):
         
         return df
 
+class DataIngestorFactory:
+    @staticmethod
+    def get_data_ingestor(file_extension: str) -> DataIngestion:
+        """Returns the appropriate DataIngestor based on file extension."""
+        if file_extension == ".zip":
+            return ZipFileDataIngestion()
+        else:
+            raise ValueError(f"No ingestor available for file extension: {file_extension}")
 
+
+
+if __name__ == "__main__":
+    # Example usage
+    zip_file_path = "./data/archive.zip"
+    file_extension = zip_file_path.split(".")[-1]
+    ingestion = DataIngestorFactory().get_data_ingestor(file_extension)
+    df = ingestion.ingest(zip_file_path)
+    print(df.head())
+    
+    pass
