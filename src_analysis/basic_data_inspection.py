@@ -1,6 +1,10 @@
 from abc import ABC, abstractmethod
 import pandas as pd
 
+
+# Abstract Base Class for Data Inspection Strategies
+# --------------------------------------------------
+# This class defines a common interface for data inspection strategies.
 class DataInspection(ABC):
     @abstractmethod
     def inspect(self, data: pd.DataFrame):
@@ -20,7 +24,7 @@ class summary_statistics_inspection(DataInspection):
         return data.describe()
 
 
-#This class is the context class that will use the strategy
+#This class is the context class that will use the DataInspection class
 class DataInspector:
     def __init__(self, strategy: DataInspection):
         '''Initializes the DataInspector with a strategy'''
@@ -31,7 +35,7 @@ class DataInspector:
         '''Sets the strategy of the DataInspector'''
         self.strategy = strategy
     
-    def execute_strategy(self, data: pd.DataFrame):
+    def execute_inspection(self, data: pd.DataFrame):
         '''Executes the strategy to inspect the data'''
         return self.strategy.inspect(data)
 
