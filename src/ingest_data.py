@@ -52,7 +52,7 @@ class DataIngestorFactory:
 if __name__ == "__main__":
     # Example usage
     zip_file_path = "./data/archive.zip"
-    file_extension = zip_file_path.split(".")[-1]
+    file_extension = os.path.splitext(zip_file_path)[1]
     ingestion = DataIngestorFactory().get_data_ingestor(file_extension)
     df = ingestion.ingest(zip_file_path)
     print(df.head())
