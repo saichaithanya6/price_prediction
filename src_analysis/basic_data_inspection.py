@@ -24,7 +24,7 @@ class summary_statistics_inspection(DataInspection):
         print("\n Summary Statistics of numerical features:")
         print(data.describe())
         print("\n Summary Statistics of categorical features:")
-        print(data.describe(include = 'object'))
+        print(data.describe(include = [0]))
 
 
 #This class is the context class that will use the DataInspection class
