@@ -16,12 +16,15 @@ class DataInspection(ABC):
 class DataTypeInspection(DataInspection):
     def inspect(self, data: pd.DataFrame):
         '''Inspects the data types of the columns'''
-        return data.info()
+        print(data.info())
 
 class summary_statistics_inspection(DataInspection):
     def inspect(self, data: pd.DataFrame):
         '''Inspects the summary statistics of the data'''
-        return data.describe()
+        print("\n Summary Statistics of numerical features:")
+        print(data.describe())
+        print("\n Summary Statistics of categorical features:")
+        print(data.describe(include = 'object'))
 
 
 #This class is the context class that will use the DataInspection class
@@ -37,5 +40,5 @@ class DataInspector:
     
     def execute_inspection(self, data: pd.DataFrame):
         '''Executes the strategy to inspect the data'''
-        return self.strategy.inspect(data)
+        self.strategy.inspect(data)
 
