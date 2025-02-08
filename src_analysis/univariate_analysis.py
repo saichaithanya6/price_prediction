@@ -20,7 +20,7 @@ class NumericalUnivariateAnalysis(UnivariateAnalysisStrategy):
         '''Performs univariate analysis on numerical data'''
         
         plt.figure(figsize=(12, 6))
-        plt.histplot(data[feature], kde=True)
+        sns.histplot(data[feature], kde=True, bins=30, color='blue')
         plt.title(f'Distribution of {feature}')
         plt.xlabel(feature)
         plt.ylabel('Frequency')
@@ -31,10 +31,11 @@ class CategoricalUnivariateAnalysis(UnivariateAnalysisStrategy):
     def analyze(self, data:pd.DataFrame, feature: str):
         '''Performs univariate analysis on categorical data'''
         
-        plt.figure(figsize=(12, 6))
+        plt.figure(figsize=(15, 6))
         sns.countplot(x= feature, data=data, palette= 'muted')
         plt.title(f'Distribution of {feature}')
         plt.xlabel(feature)
+        plt.xticks(rotation=45)
         plt.ylabel('Frequency')
         plt.show()
 
