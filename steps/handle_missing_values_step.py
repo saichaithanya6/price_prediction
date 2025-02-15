@@ -4,14 +4,14 @@ from src.handling_missing_values import MissingValueHandler, DropMissingValuesSt
 from zenml import step
 
 @step
-def handle_missing_values_step(df: pd.DataFrame, strategy: str= 'meean') -> pd.DataFrame:
+def handle_missing_values_step(df: pd.DataFrame, strategy: str= 'mean') -> pd.DataFrame:
     """Handles missing values in the data."""
     
     if strategy == "drop":
         handler = MissingValueHandler(DropMissingValuesStrategy(axis = 0))
     
     elif strategy in ["mean", "median", "mode", "constant"]:
-        handler = MissingValueHandler(FillMissingValuesStrategy(strategy))
+        handler = MissingValueHandler(FillMissingValuesStrategy(method= strategy))
     else:
         raise ValueError(f"Invalid strategy: {strategy}")
     

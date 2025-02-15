@@ -4,7 +4,7 @@ from typing import Tuple
 import pandas as pd
 from sklearn.pipeline import Pipeline
 from src.model_evaluation import ModelEvaluator, RegressionModelEvaluation
-from zenml import step, Output
+from zenml import step
 
 @step(enable_cache=False)
 

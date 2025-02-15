@@ -1,6 +1,6 @@
 import click
 from pipelines.training_pipeline import ml_pipeline
-from zenml.integrations.mlflow.mlflow_utlis import get_tracking_uri
+from zenml.integrations.mlflow.mlflow_utils import get_tracking_uri
 
 @click.command()
 

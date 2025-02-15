@@ -15,7 +15,7 @@ def ml_pipeline():
     """Defines end-to-end ML pipeline."""
     
     #Data ingestion
-    raw_data = data_ingestion_step(file_path= "/data/archive.zip")
+    raw_data = data_ingestion_step(file_path= "./data/archive.zip")
     
     #Handle missing values
     filled_data = handle_missing_values_step(df= raw_data)
@@ -24,7 +24,7 @@ def ml_pipeline():
     transformed_data = feature_engineering_step(data= filled_data, strategy= "log", features= ["Gr Liv Area","SalePrice"])
     
     #Outlier detection
-    cleaned_data = outlier_detection_step(data= transformed_data, column_name= "SalePrice")
+    cleaned_data = outlier_detection_step(df= transformed_data, column_name= "SalePrice")
     
     #Data splitting
     X_train, X_test, y_train, y_test = data_splitter_step(df= cleaned_data, target_column= "SalePrice")

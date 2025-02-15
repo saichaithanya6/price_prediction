@@ -3,7 +3,7 @@ from abc import ABC, abstractmethod
 
 import pandas as pd
 import numpy as np
-from sklearn.preprocessing import OneHotEncoder, LabelEncoder, MinMaxScaler, StandardScaler
+from sklearn.preprocessing import OneHotEncoder, MinMaxScaler, StandardScaler
 
 logging.basicConfig(level=logging.INFO, format="%(asctime)s - %(levelname)s - %(message)s")
 
@@ -11,7 +11,7 @@ logging.basicConfig(level=logging.INFO, format="%(asctime)s - %(levelname)s - %(
 
 class FeatureEngineeringStrategy(ABC):
     @abstractmethod
-    def transform(self, data: pd.DataFrame)-> pd.DataFrame:
+    def apply_transform(self, data: pd.DataFrame)-> pd.DataFrame:
         '''Transforms the data'''
         pass
 
@@ -21,7 +21,7 @@ class LogTransform(FeatureEngineeringStrategy):
     def __init__(self, features):
         self.features = features
     
-    
+        
     def apply_transform(self, data: pd.DataFrame)-> pd.DataFrame:
         '''Applies log transformation to the data'''
         logging.info("Applying log transformation")

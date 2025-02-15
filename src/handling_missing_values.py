@@ -40,16 +40,16 @@ class FillMissingValuesStrategy(MissingValuesHandler):
         df_cleaned = df.copy()
         
         if self.method == "mean":
-            numeric_cols = df.cleaned.select_dtypes(include=["number"]).columns
+            numeric_cols = df_cleaned.select_dtypes(include=["number"]).columns
             df_cleaned[numeric_cols]= df_cleaned[numeric_cols].fillna(df_cleaned[numeric_cols].mean())   
             
             
         elif self.method == "median":
-            numeric_cols = df.cleaned.select_dtypes(include=["number"]).columns
+            numeric_cols = df_cleaned.select_dtypes(include=["number"]).columns
             df_cleaned[numeric_cols]= df_cleaned[numeric_cols].fillna(df_cleaned[numeric_cols].median())
         
         elif self.method == "mode":
-            nummeric_cols = df.cleaned.select_dtypes(include=["number"]).columns
+            nummeric_cols = df_cleaned.select_dtypes(include=["number"]).columns
             df_cleaned[numeric_cols]= df_cleaned[numeric_cols].fillna(df_cleaned[numeric_cols].mode().iloc[0], inplace=True) 
         
         elif self.method == "constant":

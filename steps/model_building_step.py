@@ -3,18 +3,17 @@ import pandas as pd
 
 import mlflow
 from typing import Annotated
-from zenml import step, Output
 from sklearn.base import RegressorMixin
 from sklearn.compose import ColumnTransformer
 from sklearn.impute import SimpleImputer
 from sklearn.linear_model import LinearRegression
 from sklearn.pipeline import Pipeline
-from sklearn.preprocessing import OneHotEncoder, StandardScaler
+from sklearn.preprocessing import OneHotEncoder
 from zenml import ArtifactConfig, step
 from zenml.client import Client
 
 #Active experiment tracker
-experiment_tracker = Client().active_experiment_tracker
+experiment_tracker = Client().active_stack.experiment_tracker
 from zenml import Model
 
 model = Model(
@@ -76,7 +75,7 @@ def model_building_step(
         
         #Log the column that the model expects
         onehot_encoder= (
-            pipeline.named_steps["preprocessor"].transformers_[1][1].named_steps["onehot"]
+            pipeline.named_steps["preprocessor"].transformers_[1][1].named_steps["encoder"]
         )
         onehot_encoder.fit(X_train[categorical_col])
         expected_columns= numerical_col.tolist() + list(onehot_encoder.get_feature_names_out(categorical_col))
