@@ -14,6 +14,7 @@ from zenml.client import Client
 
 #Active experiment tracker
 experiment_tracker = Client().active_stack.experiment_tracker
+experiment_tracker_name = experiment_tracker.name if experiment_tracker else None
 from zenml import Model
 
 model = Model(
@@ -23,7 +24,7 @@ model = Model(
     description= "Pricepreediction for housing",
 )
 
-@step(enable_cache= True, experiment_tracker= experiment_tracker.name, model= model)
+@step(enable_cache= True, experiment_tracker= experiment_tracker_name, model= model)
 def model_building_step(
     X_train: pd.DataFrame, y_train: pd.Series
 ) -> Annotated[Pipeline, ArtifactConfig(name= "sklearn_pipeline", is_model_artifact= True)]:
