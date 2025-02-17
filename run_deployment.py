@@ -5,7 +5,7 @@ from pipelines.deployment_pipeline import(
 )
 
 from rich import print
-from zenml.integrations.mlflow.mlflow_utlis import get_tracking_uri
+from zenml.integrations.mlflow.mlflow_utils import get_tracking_uri
 from zenml.integrations.mlflow.model_deployers.mlflow_model_deployer import(
     MLFlowModelDeployer
 )
