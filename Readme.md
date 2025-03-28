@@ -1,6 +1,6 @@
 ### Price Prediction with Continuous Integration & Deployment Using ZenML
 
-This project is not just about developing a machine learning model for price prediction but also focuses on implementing a Continuous Integration (CI) and Continuous Deployment (CD) system using ZenML. The goal is to create a robust, automated, and scalable pipeline for model training, evaluation, and deploying.
+This project is not just about developing a machine learning model for price prediction but also focusing on implementing a Continuous Integration (CI) and Continuous Deployment (CD) system using ZenML. The goal is to create a robust, automated, and scalable pipeline for model training, evaluation, and deploying a machine learning model.
 
 ##### Key Steps & Implementation
 
